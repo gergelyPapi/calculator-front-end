@@ -13,8 +13,16 @@ button {
     background-color: rgb(61, 43, 184);
   }
   
+  .split {
+    grid-column: span 2;
+    background-color: rgb(243, 61, 29);
+  }
+
+  .split:hover {
+    background-color: rgb(228, 39, 15);
+  }
+
   .equals {
-    grid-column: 3 / 5;
     background-color: rgb(243, 61, 29);
   }
   
