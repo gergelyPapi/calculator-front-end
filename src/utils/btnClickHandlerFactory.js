@@ -30,9 +30,9 @@ const btnClickHandlerFactory = (btn) => btn === 'C'
 ? signClickHandler
 : btn === '.'
 ? comaClickHandler
-: btn === 'load'
+: btn === 'Load'
 ? loadClickHandler
-: btn === 'save'
+: btn === 'Save'
 ? saveClickHandler
 : numClickHandler;
 

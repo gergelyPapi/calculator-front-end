@@ -11,11 +11,10 @@ import Button from "./components/Button";
 
 const btnValues = [
   ["X", "/", "+", "-"],
-  [1, 2, 3,],
-  [4, 5, 6,],
-  [7, 8, 9,],
-  [0, ".", "="],
-  ["Load", "Save"],
+  [1, 2, 3, 4],
+  [5, 6, 7, 8],
+  [9, 0, ".", "=",],
+  ["Load", "Save", "C"],
 ];
 
 function App() {
@@ -33,10 +32,10 @@ function App() {
         {
           btnValues.flat().map((btn, i) => {
             let className;
-            if(btn === "=") {
-              className = "equals";
-            } else if (btn === "Save" || btn === "Load") {
+            if(btn === "Save" || btn === "Load") {
               className = "split";
+            } else if (btn === "C") {
+              className = "reset";
             } else {
               className = "";
             }

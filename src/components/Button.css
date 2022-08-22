@@ -14,7 +14,6 @@ button {
   }
   
   .split {
-    grid-column: span 2;
     background-color: rgb(243, 61, 29);
   }
 
@@ -22,11 +21,12 @@ button {
     background-color: rgb(228, 39, 15);
   }
 
-  .equals {
+  .reset {
+    grid-column: span 2;
     background-color: rgb(243, 61, 29);
   }
-  
-  .equals:hover {
+
+  .reset:hover {
     background-color: rgb(228, 39, 15);
   }
   
