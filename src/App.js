@@ -45,12 +45,13 @@ function App() {
                 key={i}
                 className={className}
                 value={btn}
-                onClick={() => {
+                onClick={(e) => {
+                  e.preventDefault();
                   const {
-                    sign,
-                    num,
-                    result
-                  } = btnClickHandlerFactory(btn);
+                    sign = "",
+                    num = 0,
+                    result = 0
+                  } = btnClickHandlerFactory(btn)(e, calc);
                   setCalc({
                     ...calc,
                     sign,
