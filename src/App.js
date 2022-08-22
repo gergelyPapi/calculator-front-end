@@ -1,4 +1,8 @@
+import React, { useState } from "react";
+
 import './App.css';
+
+import btnClickHandlerFactory from "./utils/btnClickHandlerFactory";
 
 import Frame from "./components/Frame";
 import Screen from "./components/Screen";
@@ -15,9 +19,16 @@ const btnValues = [
 ];
 
 function App() {
+
+  let [calc, setCalc] = useState({
+    sign: "",
+    num: 0,
+    result: 0,
+  });
+
   return (
     <Frame>
-      <Screen value='0'/>
+      <Screen value={calc.num ? calc.num : calc.result} />
       <ButtonFrame>
         {
           btnValues.flat().map((btn, i) => {
@@ -35,7 +46,17 @@ function App() {
                 className={className}
                 value={btn}
                 onClick={() => {
-                  
+                  const {
+                    sign,
+                    num,
+                    result
+                  } = btnClickHandlerFactory(btn);
+                  setCalc({
+                    ...calc,
+                    sign,
+                    num,
+                    result
+                  })
                 }}
               />
             );
