@@ -31,14 +31,11 @@ function App() {
       <ButtonFrame>
         {
           btnValues.flat().map((btn, i) => {
-            let className;
-            if(btn === "Save" || btn === "Load") {
-              className = "split";
-            } else if (btn === "C") {
-              className = "reset";
-            } else {
-              className = "";
-            }
+            const className = btn === "Save" || btn === "Load" ?
+              "split"
+              : btn === "C" ?
+              "reset":
+              "";
             return (
               <Button
                 key={i}
@@ -46,14 +43,9 @@ function App() {
                 value={btn}
                 onClick={(e) => {
                   e.preventDefault();
-                  const resultObject = btnClickHandlerFactory(btn)(e, calc) ??  {
-                    sign: "",
-                    num: 0,
-                    result: 0,
-                  };
                   setCalc({
                     ...calc,
-                    ...resultObject
+                    ...btnClickHandlerFactory(btn)(e, calc)
                   })
                 }}
               />
