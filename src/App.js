@@ -47,16 +47,14 @@ function App() {
                 value={btn}
                 onClick={(e) => {
                   e.preventDefault();
-                  const {
-                    sign = "",
-                    num = 0,
-                    result = 0
-                  } = btnClickHandlerFactory(btn)(e, calc);
+                  const resultObject = btnClickHandlerFactory(btn)(e, calc) ??  {
+                    sign: "",
+                    num: 0,
+                    result: 0,
+                  };
                   setCalc({
                     ...calc,
-                    sign,
-                    num,
-                    result
+                    ...resultObject
                   })
                 }}
               />

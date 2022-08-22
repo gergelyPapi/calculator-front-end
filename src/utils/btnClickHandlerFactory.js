@@ -9,7 +9,7 @@ const loadClickHandler = () => {};
 const saveClickHandler = () => {};
 const numClickHandler = (e, calc) => {
     const value = e.target.innerHTML;
-    if(removeSpaces(calc.num).length < 16) {
+    if (removeSpaces(calc.num).length < 16) {
         return {
             num:
               calc.num === 0 && value === "0"
