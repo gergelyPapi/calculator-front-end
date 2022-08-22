@@ -1,12 +1,19 @@
 // For number formatting
 const removeSpaces = (num) => num.toString().replace(/\s/g, "");
+
 const toLocaleString = (num) =>
   String(num).replace(/(?<!\..*)(\d)(?=(?:\d{3})+(?:\.|$))/g, "$1 ");
 
+// For operations
 const math = (a, b, sign) =>
   sign === "+" ? a + b : sign === "-" ? a - b : sign === "X" ? a * b : a / b;
 
-const resetClickHandler = () => {}
+const resetClickHandler = (_, __) => ({
+    sign: "",
+    num: 0,
+    result: 0
+});
+
 const equalsClickHandler = (_, calc) => {
     if (calc.sign && calc.num) {
         return {
@@ -23,8 +30,9 @@ const equalsClickHandler = (_, calc) => {
           sign: "",
           num: 0,
         };
-      }
-}
+      };
+};
+
 const signClickHandler = (e, calc) => ({
     ...calc,
     sign: e.target.innerHTML,
@@ -40,8 +48,16 @@ const signClickHandler = (e, calc) => ({
             )
         ),
     num: 0,
-})
-const comaClickHandler = () => {};
+});
+
+const comaClickHandler = (e, calc) => {
+    const value = e.target.innerHTML;
+
+    return {
+      ...calc,
+      num: !calc.num.toString().includes(".") ? calc.num + value : calc.num,
+    };
+};
 const loadClickHandler = () => {};
 const saveClickHandler = () => {};
 const numClickHandler = (e, calc) => {
@@ -55,8 +71,8 @@ const numClickHandler = (e, calc) => {
                 ? Number(calc.num + value)
                 : calc.num + value,
             result: !calc.sign ? 0 : calc.result,
-          }
-    }
+          };
+    };
 };
 
 const btnClickHandlerFactory = (btn) => btn === 'C'
