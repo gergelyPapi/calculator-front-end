@@ -8,22 +8,47 @@ import Frame from "./components/Frame";
 import Screen from "./components/Screen";
 import ButtonFrame from "./components/ButtonFrame";
 import Button from "./components/Button";
+import AsyncButton from "./components/AsyncButton";
 
 const btnValues = [
   ["X", "/", "+", "-"],
   [1, 2, 3, 4],
   [5, 6, 7, 8],
   [9, 0, ".", "=",],
-  ["Load", "Save", "C"],
+  ["C",],
 ];
+const delayRequest  = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 function App() {
 
-  let [calc, setCalc] = useState({
+  const [calc, setCalc] = useState({
     sign: "",
     num: 0,
     result: 0,
   });
+
+  const load = async () => {
+    const response = await fetch("http://localhost:4200/load",
+        { method: 'GET',
+          headers: {'Content-Type': 'application/json'}
+        })
+    await delayRequest(3000);
+    const { result }= await response.json();
+    setCalc({
+      ...calc,
+      result
+    })
+  };
+
+  const save = async () => {
+    const numToSave = calc.result;
+    await fetch("http://localhost:4200/save",
+        { method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({ numToSave }),
+        })
+    await delayRequest(3000);
+  };
 
   return (
     <Frame>
@@ -52,6 +77,8 @@ function App() {
             );
           })
         }
+        <AsyncButton onClick={load}>Load</AsyncButton>
+        <AsyncButton onClick={save}>Save</AsyncButton>
       </ButtonFrame>
     </Frame>
   );
