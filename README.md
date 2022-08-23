@@ -1,4 +1,4 @@
-# Tappointment assignment
+# calculator-front-end
 
 ## Description
 
@@ -11,3 +11,4 @@ Creating an app for recruitment purposes.
 - Create button one for memorisation and one for reading from database (separate service)
 - Do write production grade code
 - Bonus: "How would you make you app scalable, on a multi-service infrastructure, with thousands of users?"
+- Server: https://github.com/gergelyPapi/calculator-back-end
