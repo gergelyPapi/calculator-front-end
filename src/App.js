@@ -33,7 +33,7 @@ function App() {
     const response = await fetch("http://localhost:4200/load",
         { method: 'GET',
           headers: {'Content-Type': 'application/json'}
-        })
+        });
     await delayRequest(3000);
     const { result }= await response.json();
     setCalc({
