@@ -2,9 +2,9 @@
 
 ## Description
 
-Creating an app for recruitment purposes.
+Creating calculator app for recruitment purposes.
 
-### `Calculator`
+### `Details`
 
 - Apart form basic operations you need to support decimals, and the 10 numerical values (0-9)
 - Initialise a clear button to reset screen
