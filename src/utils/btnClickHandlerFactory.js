@@ -58,8 +58,6 @@ const comaClickHandler = (e, calc) => {
       num: !calc.num.toString().includes(".") ? calc.num + value : calc.num,
     };
 };
-const loadClickHandler = () => {};
-const saveClickHandler = () => {};
 const numClickHandler = (e, calc) => {
     const value = e.target.innerHTML;
     if (removeSpaces(calc.num).length < 16) {
@@ -83,10 +81,6 @@ const btnClickHandlerFactory = (btn) => btn === 'C'
 ? signClickHandler
 : btn === '.'
 ? comaClickHandler
-: btn === 'Load'
-? loadClickHandler
-: btn === 'Save'
-? saveClickHandler
 : numClickHandler;
 
 export default btnClickHandlerFactory;

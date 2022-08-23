@@ -17,6 +17,8 @@ const btnValues = [
   [9, 0, ".", "=",],
   ["C",],
 ];
+
+// Only to mimic slow server response time
 const delayRequest  = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 function App() {
@@ -37,16 +39,19 @@ function App() {
     setCalc({
       ...calc,
       result
-    })
+    });
   };
 
   const save = async () => {
     const numToSave = calc.result;
     await fetch("http://localhost:4200/save",
         { method: 'POST',
-          headers: {'Content-Type': 'application/json'},
+          headers: {
+            'Content-Type': 'application/json',
+            'Content-Length': 0
+          },
           body: JSON.stringify({ numToSave }),
-        })
+        });
     await delayRequest(3000);
   };
 
@@ -71,7 +76,7 @@ function App() {
                   setCalc({
                     ...calc,
                     ...btnClickHandlerFactory(btn)(e, calc)
-                  })
+                  });
                 }}
               />
             );
